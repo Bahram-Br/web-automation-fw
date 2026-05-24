@@ -1,0 +1,26 @@
+# Compiled class files
+*.class
+
+# Build output directories
+target/
+build/
+bin/
+out/
+
+# TestNG
+test-output/
+*.xml
+
+# Cucumber reports
+cucumber-reports/
+*.json
+*.html
+
+# Test artifacts
+screenshots/
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
