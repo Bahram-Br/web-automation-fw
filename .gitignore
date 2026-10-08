@@ -9,7 +9,7 @@ out/
 
 # TestNG
 test-output/
-*.xml
+.idea/
 
 # Cucumber reports
 cucumber-reports/
