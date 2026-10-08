@@ -1,29 +1,57 @@
 # Web Automation Framework
 
-This is a robust, scalable Web UI Automation Testing Framework built using **Java** and **Selenium WebDriver**. It follows the **Page Object Model (POM)** design pattern to ensure high maintainability, reusability, and clean separation of test logic from page elements.
+Java UI tests for the public [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/). The project uses Selenium WebDriver, Cucumber, and TestNG with the Page Object Model.
 
----
+## Tech stack
 
-## 🛠️ Tech Stack
+- Java 8
+- Selenium WebDriver (Chrome and Edge)
+- Cucumber
+- TestNG
+- Maven
 
-* **Programming Language:** Java (JDK 17+)
-* **Automation Tool:** Selenium WebDriver
-* **Test Runner:** TestNG / JUnit 5
-* **Build Tool:** Maven
-* **Logging:** Log4j2 / SLF4J
-* **Reporting:** Allure Report / Extent Reports
+## Project structure
 
----
+```
+src/test/java/
+  constants/          file paths and browser names
+  driver/             starts Chrome or Edge
+  hooks/              opens and closes the browser
+  pages/              login page objects
+  runners/            TestNG + Cucumber runner
+  stepdefinations/    login steps
+  utils/              reads property files
+src/test/resources/
+  config/             browser, environment, and site URL
+  features/           LoginOrange.feature
+```
 
-## 🚀 Getting Started
+`config.properties` sets `browser` (`Chrome` or `Edge`) and `environment` (`QA` or `Prod`). Use `QA` for the demo site.
 
-### 1. Prerequisites
-Ensure you have the following installed on your local machine:
-* JDK 17 or higher
-* Maven 3.6+
-* A modern web browser (Chrome, Firefox, or Edge)
+## Scenario
 
-### 2. Clone the Repository
+`LoginOrange.feature` has one scenario: log in with the public demo user `Admin` / `admin123`, then check that the URL is the demo dashboard.
+
+## How to run
+
+You need JDK 8 or newer, Maven, and Chrome or Edge.
+
 ```bash
-git clone [https://github.com/Bahram-Br/Web_Automation_FW.git](https://github.com/Bahram-Br/Web_Automation_FW.git)
-cd Web_Automation_FW
+git clone https://github.com/Bahram-Br/web-automation-fw.git
+cd web-automation-fw
+```
+
+In `src/test/resources/config/config.properties`:
+
+```properties
+browser=Chrome
+environment=QA
+```
+
+From the project root, run:
+
+```bash
+mvn test -Dtest=MyTestNGRunner
+```
+
+You can also run `runners.MyTestNGRunner` as a TestNG test in Eclipse or IntelliJ.
